@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS members;
+-- DROP TABLE IF EXISTS members;
 
-CREATE TABLE members (
-    id serial PRIMARY KEY,
-    name varchar(255) NOT NULL,
-);
+-- CREATE TABLE members (
+--     id serial PRIMARY KEY,
+--     name varchar(255) NOT NULL,
+-- );
