@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS members;
 
 CREATE TABLE members (
