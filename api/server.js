@@ -1,12 +1,28 @@
 const express = require("express");
 const cors = require("cors");
-const server = express();
 
-server.use(cors());
-server.use(express.json());
+const app = express();
+const socket = require("socket.io");
+require("dotenv").config();
+app.use(cors());
+app.use(express.json());
 
-server.get("/", (req, res) => res.send("Welcome to our Quizzards"));
+const server = app.listen(process.env.PORT, () =>
+  console.log(`Server started on ${process.env.PORT}`)
+);
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000/",
+    credentials: true,
+  },
+});
 
-// const membersRoutes = require("./routes/members");
-// server.use("/members", membersRoutes);
-module.exports = server;
+io.on("connection", (socket) => {
+  console.log(socket.id, "hello1");
+});
+
+app.get("/", (req, res) => {
+  res.send("hello server");
+});
+
+module.exports = app;
